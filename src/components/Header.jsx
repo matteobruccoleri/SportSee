@@ -65,6 +65,6 @@ function Header() {
             </Ul>            
         </Nav>
     </StyledHeader>
-  );
+  )
 }
 export default Header;

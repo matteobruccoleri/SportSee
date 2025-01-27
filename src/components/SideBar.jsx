@@ -63,6 +63,6 @@ function Sidebar() {
         </Ul>
         <Copyright>Copyright, SportSee 2020</Copyright>
       </Nav>
-  );
+  )
 }
 export default Sidebar;
