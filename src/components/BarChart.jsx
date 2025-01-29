@@ -1,5 +1,7 @@
 import React from "react";
 import { BarChart as RechartsBarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts";
+import styled from 'styled-components';
+
 
 const data = [
   { day: "1", Poids: 70, Calories: 240 },
@@ -12,11 +14,11 @@ const data = [
 function BarChart() {
     return (
         <RechartsBarChart width={600} height={300} data={data}>
+            <Legend />
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="day" />
             <YAxis />
             <Tooltip />
-            <Legend />
             <Bar dataKey="Poids" fill="#000000" />
             <Bar dataKey="Calories" fill="#FF0000" />
         </RechartsBarChart>

@@ -7,7 +7,7 @@ import BarChart from './components/BarChart';
 import LineChart from './components/LineChart';
 import RadarChart from './components/RadarChart';
 import PieChart from './components/PieChart';
-
+import Nutrients from './components/Nutrients';
 
 const Main = styled.main`
   display: flex;
@@ -39,6 +39,7 @@ function App() {
             <PieChart/>
           </Flex>
         </FlexColumn>
+        <Nutrients/>
       </Main>
 
     </>
