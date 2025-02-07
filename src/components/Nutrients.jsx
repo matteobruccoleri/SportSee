@@ -15,11 +15,12 @@ const StyledNutrientsWrapper = styled.div`
 const StyledNutrientWrapper = styled.div`
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     gap: 10px;
     padding: 10px;
     border-radius: 10px;
     background-color:#FBFBFB;
+    width: 100%;
 `;
 const StyledNutrientText = styled.div`
     display: flex;
@@ -34,7 +35,7 @@ const NutrientIconWrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background-color: #FD51811A;
+    background-color: ${(props) => props.$bgColor};
     border-radius: 6px;
 `;
 
@@ -42,7 +43,7 @@ function Nutrients() {
   return (
     <StyledNutrientsWrapper>
         <StyledNutrientWrapper>
-          <NutrientIconWrapper>
+          <NutrientIconWrapper $bgColor="#ffe8e8">
             <img src={IconEnergy} alt="icon fire" />
           </NutrientIconWrapper>
             <StyledNutrientText>
@@ -51,8 +52,8 @@ function Nutrients() {
             </StyledNutrientText>
         </StyledNutrientWrapper>
         <StyledNutrientWrapper>
-        <NutrientIconWrapper>
-            <img src={IconApple} alt="apple" />
+        <NutrientIconWrapper $bgColor="#4AB8FF1A">
+        <img src={IconChicken} alt="icon chicken" />
         </NutrientIconWrapper>
             <StyledNutrientText>
               <p>365g</p>
@@ -60,8 +61,8 @@ function Nutrients() {
             </StyledNutrientText>
         </StyledNutrientWrapper>
         <StyledNutrientWrapper>
-        <NutrientIconWrapper>
-            <img src={IconChicken} alt="icon chicken" />
+        <NutrientIconWrapper $bgColor="#fff8e2">     
+            <img src={IconApple} alt="apple" />
         </NutrientIconWrapper>
             <StyledNutrientText>
               <p>365g</p>
@@ -69,9 +70,9 @@ function Nutrients() {
             </StyledNutrientText>
         </StyledNutrientWrapper>
         <StyledNutrientWrapper>
-            <NutrientIconWrapper>
+          <NutrientIconWrapper $bgColor="#FD51811A">
               <img src={IconCheeseburger} alt="icon cheeseburger" />
-            </NutrientIconWrapper>
+          </NutrientIconWrapper>
             <StyledNutrientText>
               <p>365g</p>
               <p>Lipides</p>

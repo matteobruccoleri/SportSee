@@ -53,8 +53,9 @@ function BarChart() {
                         tick={{ fill: "#000" }}
                     />
                     <Tooltip 
-                        contentStyle={{ backgroundColor: "red", color: "white", padding: "10px" }}
+                        contentStyle={{ backgroundColor: "#E60000", color: "white", padding: "10px" }}
                         itemStyle={{ color: "white" }}
+                        labelFormatter={() => ""}
                     />
                     <Bar dataKey="Poids" fill="#000000" barSize={6} radius={[100, 100, 0, 0]}/>
                     <Bar dataKey="Calories" fill="#FF0000" barSize={6} radius={[100, 100, 0, 0]}/>
