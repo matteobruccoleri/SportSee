@@ -1,5 +1,16 @@
 import React from "react";
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from "recharts";
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from "recharts";
+
+import styled from "styled-components";
+
+const RadarChartWrapper = styled.div`
+  background-color: #000;
+  width: max-content;
+  padding: 10px;
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+`;
 
 const data = [
   { metric: "Cardio", value: 90 },
@@ -10,12 +21,16 @@ const data = [
 ];
 
 const IntensityRadarChart = () => (
-  <RadarChart cx={250} cy={150} outerRadius={120} width={500} height={300} data={data}>
-    <PolarGrid />
-    <PolarAngleAxis dataKey="metric" />
-    <PolarRadiusAxis />
-    <Radar name="Intensité" dataKey="value" stroke="#FF0000" fill="#FF0000" fillOpacity={0.6} />
-  </RadarChart>
+  <RadarChartWrapper>
+    <ResponsiveContainer width="100%" height="100%">
+    <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+      <PolarGrid />
+      <PolarAngleAxis dataKey="metric" />
+      <PolarRadiusAxis />
+      <Radar name="Intensité" dataKey="value" stroke="#FF0000" fill="#FF0000" fillOpacity={0.6} />
+    </RadarChart>
+    </ResponsiveContainer>
+  </RadarChartWrapper>
 );
 
 export default IntensityRadarChart;

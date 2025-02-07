@@ -15,13 +15,22 @@ const Main = styled.main`
   height: 100%;
 `;
 
+const StatistiqueWrapper = styled.div`
+  display: flex;
+  gap: 25px;
+  width: 100%;
+  padding: 50px;
+`;
+
 const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const Flex = styled.div`
   display: flex;
+  gap: 25px;
 `;
 
 function App() {
@@ -31,15 +40,17 @@ function App() {
       <Header/>
       <Main>
         <SideBar/>
-        <FlexColumn>
-          <BarChart/>
-          <Flex>
-            <LineChart/>
-            <RadarChart/>
-            <PieChart/>
-          </Flex>
-        </FlexColumn>
-        <Nutrients/>
+        <StatistiqueWrapper>
+          <FlexColumn>
+            <BarChart/>
+            <Flex>
+              <LineChart/>
+              <RadarChart/>
+              <PieChart/>
+            </Flex>
+          </FlexColumn>
+          <Nutrients/>
+        </StatistiqueWrapper>
       </Main>
 
     </>

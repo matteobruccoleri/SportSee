@@ -1,5 +1,18 @@
 import React from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+
+import styled from "styled-components";
+
+const LineChartWrapper = styled.div`
+  background-color: #FF0000;
+  width: max-content;
+  padding: 10px;
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+`;
+
+
 
 const data = [
   { day: "L", Duration: 30 },
@@ -10,13 +23,16 @@ const data = [
 ];
 
 const SessionDurationChart = () => (
-  <LineChart width={300} height={300} data={data}>
-    <CartesianGrid strokeDasharray="3 3" />
-    <XAxis dataKey="day" />
-    <YAxis />
-    <Tooltip />
-    <Line type="monotone" dataKey="Duration" stroke="#FF0000" />
-  </LineChart>
+  <LineChartWrapper>
+    <ResponsiveContainer width="100%" height="100%">
+    <LineChart data={data}>
+    <XAxis dataKey="day" stroke="transparent" tick={{ fill: "#FFFFFF" }}/>
+      <YAxis hide={true}/>
+      <Tooltip />
+      <Line type="monotone" dataKey="Duration" stroke="#FFF" />
+    </LineChart>
+    </ResponsiveContainer>
+  </LineChartWrapper>
 );
 
 export default SessionDurationChart;

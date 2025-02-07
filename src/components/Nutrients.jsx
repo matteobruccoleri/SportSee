@@ -19,15 +19,25 @@ const StyledNutrientWrapper = styled.div`
     gap: 10px;
     padding: 10px;
     border-radius: 10px;
-    background-color: #fcfcfc;
+    background-color:#FBFBFB;
 `;
 const StyledNutrientText = styled.div`
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     gap: 5px;
 `;
+
+const NutrientIconWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #FD51811A;
+    border-radius: 6px;
+`;
+
 function Nutrients() {
   return (
     <StyledNutrientsWrapper>
@@ -53,7 +63,9 @@ function Nutrients() {
             </StyledNutrientText>
         </StyledNutrientWrapper>
         <StyledNutrientWrapper>
-            <img src={IconCheeseburger} alt="icon cheeseburger" />
+            <NutrientIconWrapper>
+              <img src={IconCheeseburger} alt="icon cheeseburger" />
+            </NutrientIconWrapper>
             <StyledNutrientText>
               <p>365g</p>
               <p>Lipides</p>
