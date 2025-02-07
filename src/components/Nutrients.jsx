@@ -42,21 +42,27 @@ function Nutrients() {
   return (
     <StyledNutrientsWrapper>
         <StyledNutrientWrapper>
+          <NutrientIconWrapper>
             <img src={IconEnergy} alt="icon fire" />
+          </NutrientIconWrapper>
             <StyledNutrientText>
               <p>365g</p>
               <p>Calories</p>
             </StyledNutrientText>
         </StyledNutrientWrapper>
         <StyledNutrientWrapper>
+        <NutrientIconWrapper>
             <img src={IconApple} alt="apple" />
+        </NutrientIconWrapper>
             <StyledNutrientText>
               <p>365g</p>
               <p>Glucides</p>
             </StyledNutrientText>
         </StyledNutrientWrapper>
         <StyledNutrientWrapper>
+        <NutrientIconWrapper>
             <img src={IconChicken} alt="icon chicken" />
+        </NutrientIconWrapper>
             <StyledNutrientText>
               <p>365g</p>
               <p>Protéines</p>

@@ -9,6 +9,7 @@ import {
   Bar, 
   ResponsiveContainer 
 } from "recharts";
+import styled from "styled-components";
 
 const data = [
   { day: "1", Poids: 70, Calories: 240 },
@@ -23,21 +24,43 @@ const data = [
   { day: "10", Poids: 71, Calories: 240 },
 ];
 
+// Calcul des valeurs min et max du poids
+const minPoids = Math.min(...data.map(d => d.Poids));
+const maxPoids = Math.ceil(Math.max(...data.map(d => d.Poids)));
+
+
+const BarChartWrapper = styled.div`
+    background-color: #FBFBFB;
+    width: max-content;
+    padding: 10px;
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+`;
+
 function BarChart() {
     return (
-        <div style={{ width: "100%", height: 300 }}> {/* Assure que le parent a une largeur définie */}
+        <BarChartWrapper style={{ width: "100%", height: 300 }}>
             <ResponsiveContainer width="100%" height="100%">
                 <RechartsBarChart data={data}>
-                    <Legend />
-                    <CartesianGrid strokeDasharray="3 3" />
+                <Legend layout="horizontal" verticalAlign="top" align="end" wrapperStyle={{ top: -10, left: 0, right: 0 }}/>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} /> {/* Supprime les barres verticales */}
                     <XAxis dataKey="day" stroke="transparent" tick={{ fill: "#000" }} />
-                    <YAxis stroke="transparent" tick={{ fill: "#000" }} />
-                    <Tooltip />
-                    <Bar dataKey="Poids" fill="#000000" />
-                    <Bar dataKey="Calories" fill="#FF0000" />
+                    <YAxis 
+                        domain={[minPoids, maxPoids]}
+                        orientation="right" 
+                        stroke="transparent" 
+                        tick={{ fill: "#000" }}
+                    />
+                    <Tooltip 
+                        contentStyle={{ backgroundColor: "red", color: "white", padding: "10px" }}
+                        itemStyle={{ color: "white" }}
+                    />
+                    <Bar dataKey="Poids" fill="#000000" barSize={6} radius={[100, 100, 0, 0]}/>
+                    <Bar dataKey="Calories" fill="#FF0000" barSize={6} radius={[100, 100, 0, 0]}/>
                 </RechartsBarChart>
             </ResponsiveContainer>
-        </div>
+        </BarChartWrapper>
     );
 }
 
