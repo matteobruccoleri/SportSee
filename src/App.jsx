@@ -25,6 +25,8 @@ const StatistiqueWrapper = styled.div`
 const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 25px;
   width: 100%;
 `;
@@ -32,6 +34,7 @@ const FlexColumn = styled.div`
 const Flex = styled.div`
   display: flex;
   gap: 25px;
+  width: 100%;
 `;
 
 function App() {
