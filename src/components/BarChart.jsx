@@ -1,4 +1,5 @@
-import React from "react";
+//import React from "react";
+
 import { 
   BarChart as RechartsBarChart, 
   CartesianGrid, 
@@ -32,7 +33,7 @@ const maxPoids = Math.ceil(Math.max(...data.map(d => d.Poids)));
 const BarChartWrapper = styled.div`
     background-color: #FBFBFB;
     width: max-content;
-    padding: 10px;
+    padding: 20px;
     width: 100%;
     height: 300px;
     border-radius: 5px;
@@ -42,9 +43,10 @@ function BarChart() {
     return (
         <BarChartWrapper style={{ width: "100%", height: 300 }}>
             <ResponsiveContainer width="100%" height="100%">
+                <p>Activité quotidienne</p>
                 <RechartsBarChart data={data}>
                 <Legend layout="horizontal" verticalAlign="top" align="end" wrapperStyle={{ top: -10, left: 0, right: 0 }}/>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} /> {/* Supprime les barres verticales */}
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
                     <XAxis dataKey="day" stroke="transparent" tick={{ fill: "#000" }} />
                     <YAxis 
                         domain={[minPoids, maxPoids]}
