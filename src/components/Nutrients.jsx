@@ -9,15 +9,15 @@ const StyledNutrientsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 25px;
+    justify_content: space-between;
 `;
 const StyledNutrientWrapper = styled.div`
+    flex: 1 0 0;
     display: flex;
     align-items: center;
     justify-content: start;
     gap: 10px;
-    padding: 10px;
+    padding: 30px;
     border-radius: 10px;
     background-color:#FBFBFB;
     width: 100%;

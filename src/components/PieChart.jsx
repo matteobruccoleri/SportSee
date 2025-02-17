@@ -8,7 +8,7 @@ const PieChartWrapper = styled.div`
   background-color: #FBFBFB;
   padding: 30px;
   width: 100%;
-  height: 300px;
+  height: 260px;
   border-radius: 5px;
   position: relative;
 `;
@@ -18,8 +18,8 @@ const Title = styled.h2`
   font-weight: 600;
   margin: 0;
   position: absolute;
-  top: 50px;
-  left: 100px;
+  top: 30px;
+  left: 30px;
   z-index: 2;
   color: #20253A;
 `;

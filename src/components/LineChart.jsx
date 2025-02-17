@@ -1,3 +1,4 @@
+import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, Rectangle } from "recharts";
 import styled from "styled-components";
 import PropTypes from 'prop-types';
@@ -12,16 +13,13 @@ const data = [
   { day: "D", Duration: 65 }
 ];
 
-const LineChartWrapper = styled.div`
+const ChartContainer = styled.div`
   background-color: #FF0000;
-  padding: 30px 20px;
-  width: 100%;
-  height: 300px;
   border-radius: 5px;
+  width: 100%;
+  height: 260px;
   position: relative;
 `;
-
-
 
 const CustomTooltip = styled.div`
   background-color: white;
@@ -30,17 +28,28 @@ const CustomTooltip = styled.div`
   color: black;
 `;
 
+const LegendText = styled.div`
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  font-weight: 500;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 150px;
+  line-height: 1.5;
+`;
+
 const CustomCursor = (props) => {
-  const { points, width, height } = props;
+  const { points, width = 40, height, offset = 0 } = props;
   const { x } = points[0];
   
   return (
     <Rectangle
       fill="rgba(0, 0, 0, 0.1)"
-      x={x}
+      x={x - (width / 2) + offset}
       y={0}
       width={width}
-      height={height}
+      height={height + 30}
     />
   );
 };
@@ -53,7 +62,8 @@ CustomCursor.propTypes = {
     })
   ),
   width: PropTypes.number,
-  height: PropTypes.number
+  height: PropTypes.number,
+  offset: PropTypes.number
 };
 
 const CustomizedTooltip = ({ active = false, payload = [] }) => {
@@ -77,11 +87,11 @@ CustomizedTooltip.propTypes = {
 };
 
 const SessionDurationChart = () => (
-  <LineChartWrapper>
+  <ChartContainer>
     <ResponsiveContainer width="100%" height="100%">
       <LineChart 
         data={data}
-        margin={{ top: 0, right: 10, bottom: 10, left: 10 }}
+        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
       >
         <XAxis 
           dataKey="day" 
@@ -90,6 +100,7 @@ const SessionDurationChart = () => (
           tickLine={false}
           axisLine={false}
           padding={{ left: 10, right: 10 }}
+          interval={0}
         />
         <YAxis 
           hide={true}
@@ -97,24 +108,15 @@ const SessionDurationChart = () => (
         />
         <Tooltip 
           content={<CustomizedTooltip />}
-          cursor={<CustomCursor />}
+          cursor={<CustomCursor width={30} offset={1} />}
         />
         <Legend 
           verticalAlign="top"
           align="left"
           content={() => (
-            <div style={{
-              color: 'rgba(255, 255, 255, 0.6)',
-              fontSize: '15px',
-              fontWeight: 500,
-              position: 'absolute',
-              top: '15px',
-              left: '34px',
-              width: '150px',
-              lineHeight: 1.5
-            }}>
+            <LegendText>
               Durée moyenne des sessions
-            </div>
+            </LegendText>
           )}
         />
         <Line 
@@ -132,7 +134,7 @@ const SessionDurationChart = () => (
         />
       </LineChart>
     </ResponsiveContainer>
-  </LineChartWrapper>
+  </ChartContainer>
 );
 
 export default SessionDurationChart;

@@ -4,29 +4,40 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 import styled from "styled-components";
 
 const RadarChartWrapper = styled.div`
-  background-color: #000;
+  background-color: #282D30;
   width: max-content;
-  padding: 10px;
   width: 100%;
-  height: 300px;
+  height: 260px;
   border-radius: 5px;
+  padding: 10px;
 `;
 
 const data = [
-  { metric: "Cardio", value: 90 },
+  { metric: "Intensité", value: 60 },
   { metric: "Force", value: 80 },
   { metric: "Vitesse", value: 70 },
   { metric: "Endurance", value: 95 },
-  { metric: "Energie", value: 85 },
+  { metric: "Cardio", value: 85 },
+  { metric: "Energie", value: 60 },
 ];
 
 const IntensityRadarChart = () => (
   <RadarChartWrapper>
     <ResponsiveContainer width="100%" height="100%">
-    <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-      <PolarGrid />
-      <PolarAngleAxis dataKey="metric" />
-      <PolarRadiusAxis />
+    <RadarChart cx="50%" cy="50%" outerRadius="60%" data={data}>
+    <PolarGrid gridType="polygon" radialLines={false} />
+        <PolarAngleAxis 
+          dataKey="metric" 
+          tick={{ 
+            fill: "#fff",  
+            fontSize: 14 
+          }} 
+        />
+        <PolarRadiusAxis 
+          tick={false}
+          domain={[0, 100]}
+          axisLine={false}
+        />
       <Radar name="Intensité" dataKey="value" stroke="#FF0000" fill="#FF0000" fillOpacity={0.6} />
     </RadarChart>
     </ResponsiveContainer>

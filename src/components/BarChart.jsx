@@ -30,7 +30,7 @@ import {
       background-color: #FBFBFB;
       padding: 20px;
       width: 100%;
-      height: 300px;
+      height: 260px;
       border-radius: 5px;
   `;
   
@@ -84,7 +84,7 @@ import {
           alignItems:"center",
           gap: '25px',
           backgroundColor: '#E60000',
-          padding: '20px',
+          padding: '20px 10px',
           color: 'white',
           fontSize: '12px'
         }}>
@@ -158,7 +158,10 @@ import {
                               orientation="left"
                               hide={true}
                           />
-                          <Tooltip content={<CustomTooltip />} />
+                          <Tooltip 
+                            content={<CustomTooltip />}
+                            cursor={{ fill: '#C4C4C480' }}
+                            />
                           <Bar 
                               yAxisId="right"
                               dataKey="Poids" 
