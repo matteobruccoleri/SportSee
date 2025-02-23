@@ -9,7 +9,7 @@ const StyledNutrientsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify_content: space-between;
+    justify-content: space-between;
 `;
 const StyledNutrientWrapper = styled.div`
     flex: 1 0 0;
