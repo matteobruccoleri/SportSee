@@ -1,12 +1,12 @@
+// pages/ProfilePage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import apiService from '../services/api';
 import BarChart from '../components/BarChart';
 import LineChart from '../components/LineChart';
-import RadarChart from '../components/RadarChart';
-import PieChart from '../components/PieChart';
+import CustomRadarChart from '../components/RadarChart';
+import CustomPieChart from '../components/PieChart';
 import Nutrients from '../components/Nutrients';
-
 import styled from 'styled-components';
 
 const ProfilePage = () => {
@@ -18,41 +18,36 @@ const ProfilePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
   const ProfilContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  height: 100%;
-  min-height: 780px;
-  padding: 50px;
-  @media (min-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    min-height: 780px;
+    padding: 50px;
+    gap: 50px;
+    @media (min-width: 1024px) {
+      width: 100%;
+    }
+  `;
+  const UserName = styled.span`
+    color: #FF0000;
+  `;
+  const Dashboard = styled.div`
+    display: flex;
+    height: 100%;
+    gap: 25px;
+  `;
+  const ChartsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     width: 100%;
-  }
-`;
-const UserName = styled.span`
-color: #FF0000;
-}
-`;
-
-const Dashboard = styled.div`
-display: flex;
-height: 100%;
-gap: 25px;
-`;
-
-const ChartsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 25px;
-`;
-
-const ChartsRow = styled.div`
-  display: flex;
-  gap: 25px;
-`;
-
+    gap: 25px;
+  `;
+  const ChartsRow = styled.div`
+    display: flex;
+    gap: 25px;
+  `;
 
   useEffect(() => {
     async function fetchAllData() {
@@ -78,7 +73,6 @@ const ChartsRow = styled.div`
         setLoading(false);
       }
     }
-
     fetchAllData();
   }, [userId]);
 
@@ -89,17 +83,18 @@ const ChartsRow = styled.div`
   return (
     <ProfilContainer>
       <div>
-        <h1>Bonjour <UserName>{userData.userInfos.firstName}</UserName></h1>
+        <h1>
+          Bonjour <UserName>{userData.userInfos.firstName}</UserName>
+        </h1>
         <p>Félicitations ! Vous avez explosé vos objectifs hier 👏</p>
       </div>
-
       <Dashboard>
         <ChartsContainer>
           <BarChart data={activityData} />
           <ChartsRow>
             <LineChart data={sessionsData} />
-            <RadarChart data={performanceData} />
-            <PieChart score={userData.todayScore || userData.score} />
+            <CustomRadarChart data={performanceData} />
+            <CustomPieChart score={userData.todayScore || userData.score} />
           </ChartsRow>
         </ChartsContainer>
         <Nutrients data={userData.keyData} />

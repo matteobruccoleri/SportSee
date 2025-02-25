@@ -1,17 +1,7 @@
-import React from 'react';
+// components/LineChart.jsx
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, Rectangle } from "recharts";
 import styled from "styled-components";
 import PropTypes from 'prop-types';
-
-const data = [
-  { day: "L", Duration: 30 },
-  { day: "M", Duration: 40 },
-  { day: "M", Duration: 50 },
-  { day: "J", Duration: 45 },
-  { day: "V", Duration: 60 },
-  { day: "S", Duration: 55 },
-  { day: "D", Duration: 65 }
-];
 
 const ChartContainer = styled.div`
   background-color: #FF0000;
@@ -86,55 +76,69 @@ CustomizedTooltip.propTypes = {
   )
 };
 
-const SessionDurationChart = () => (
-  <ChartContainer>
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart 
-        data={data}
-        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      >
-        <XAxis 
-          dataKey="day" 
-          stroke="transparent"
-          tick={{ fill: "rgba(255, 255, 255, 0.6)" }}
-          tickLine={false}
-          axisLine={false}
-          padding={{ left: 10, right: 10 }}
-          interval={0}
-        />
-        <YAxis 
-          hide={true}
-          domain={['dataMin - 10', 'dataMax + 10']}
-        />
-        <Tooltip 
-          content={<CustomizedTooltip />}
-          cursor={<CustomCursor width={30} offset={1} />}
-        />
-        <Legend 
-          verticalAlign="top"
-          align="left"
-          content={() => (
-            <LegendText>
-              Durée moyenne des sessions
-            </LegendText>
-          )}
-        />
-        <Line 
-          type="natural" 
-          dataKey="Duration" 
-          stroke="#FFFFFF"
-          strokeWidth={2}
-          dot={false}
-          activeDot={{
-            stroke: "rgba(255,255,255, 0.4)",
-            strokeWidth: 10,
-            r: 4,
-            fill: "#FFFFFF"
-          }}
-        />
-      </LineChart>
-    </ResponsiveContainer>
-  </ChartContainer>
-);
+const SessionDurationChart = ({ data }) => {
+  if (!data) return null;
+  console.log("LineChart data:", data);
+  // Ici, data doit être un tableau d'objets avec au moins les clés "day" et "Duration"
+  return (
+    <ChartContainer>
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart 
+          data={data}
+          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+        >
+          <XAxis 
+            dataKey="day" 
+            stroke="transparent"
+            tick={{ fill: "rgba(255, 255, 255, 0.6)" }}
+            tickLine={false}
+            axisLine={false}
+            padding={{ left: 10, right: 10 }}
+            interval={0}
+          />
+          <YAxis 
+            hide={true}
+            domain={['dataMin - 10', 'dataMax + 10']}
+          />
+          <Tooltip 
+            content={<CustomizedTooltip />}
+            cursor={<CustomCursor width={30} offset={1} />}
+          />
+          <Legend 
+            verticalAlign="top"
+            align="left"
+            content={() => (
+              <LegendText>
+                Durée moyenne des sessions
+              </LegendText>
+            )}
+          />
+          <Line 
+            type="natural" 
+            dataKey="Duration" 
+            stroke="#FFFFFF"
+            strokeWidth={2}
+            dot={false}
+            activeDot={{
+              stroke: "rgba(255,255,255, 0.4)",
+              strokeWidth: 10,
+              r: 4,
+              fill: "#FFFFFF"
+            }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </ChartContainer>
+  );
+};
+
+SessionDurationChart.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      Duration: PropTypes.number.isRequired,
+    })
+  )
+};
 
 export default SessionDurationChart;

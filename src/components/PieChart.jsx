@@ -1,8 +1,7 @@
+// components/PieChart.jsx
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import styled from "styled-components";
-
-const scoreData = [{ name: "Complété", value: 12 }, { name: "Restant", value: 88 }];
-const colors = ["#FF0000", "#FBFBFB"];
+import PropTypes from "prop-types";
 
 const PieChartWrapper = styled.div`
   background-color: #FBFBFB;
@@ -54,13 +53,21 @@ const ScoreText = styled.p`
   font-weight: 700;
 `;
 
-const ScorePieChart = () => {
+const ScorePieChart = ({ score }) => {
+  if (score === undefined) return null;
+  const percentage = score * 100;
+  const scoreData = [
+    { name: "Complété", value: percentage },
+    { name: "Restant", value: 100 - percentage }
+  ];
+  const colors = ["#FF0000", "#FBFBFB"];
+
   return (
     <PieChartWrapper>
       <Title>Score</Title>
       <ScoreLabel>
-        <ScoreValue>12%</ScoreValue>
-        <ScoreText>de votre<br/>objectif</ScoreText>
+        <ScoreValue>{percentage}%</ScoreValue>
+        <ScoreText>de votre<br />objectif</ScoreText>
       </ScoreLabel>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
@@ -82,7 +89,6 @@ const ScorePieChart = () => {
             endAngle={450}
             innerRadius={70}
             outerRadius={80}
-            fill="#FF0000"
             dataKey="value"
             cornerRadius={10}
           >
@@ -98,6 +104,10 @@ const ScorePieChart = () => {
       </ResponsiveContainer>
     </PieChartWrapper>
   );
+};
+
+ScorePieChart.propTypes = {
+  score: PropTypes.number.isRequired,
 };
 
 export default ScorePieChart;
