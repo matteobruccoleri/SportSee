@@ -1,13 +1,18 @@
-// pages/ProfilePage.jsx
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import apiService from '../services/api';
+import realApiService from '../services/api'; // Service API réel
+import mockApiService from '../services/mockApiService'; // Service mockée
 import BarChart from '../components/BarChart';
 import LineChart from '../components/LineChart';
 import CustomRadarChart from '../components/RadarChart';
 import CustomPieChart from '../components/PieChart';
 import Nutrients from '../components/Nutrients';
 import styled from 'styled-components';
+
+// Utilisez cette constante pour choisir le service à utiliser
+const USE_MOCK_DATA = false;
+// Sélectionnez le service approprié en fonction de USE_MOCK_DATA
+const dataService = USE_MOCK_DATA ? mockApiService : realApiService;
 
 const ProfilePage = () => {
   const { userId } = useParams();
@@ -57,11 +62,15 @@ const ProfilePage = () => {
         }
 
         const [user, activity, sessions, performance] = await Promise.all([
-          apiService.getUserMainData(userId),
-          apiService.getUserActivity(userId),
-          apiService.getUserAverageSessions(userId),
-          apiService.getUserPerformance(userId)
+          dataService.getUserMainData(userId),
+          dataService.getUserActivity(userId),
+          dataService.getUserAverageSessions(userId),
+          dataService.getUserPerformance(userId)
         ]);
+
+        if (!user) {
+          throw new Error('Données utilisateur non disponibles');
+        }
 
         setUserData(user);
         setActivityData(activity);
@@ -69,7 +78,8 @@ const ProfilePage = () => {
         setPerformanceData(performance);
         setLoading(false);
       } catch (err) {
-        setError('Erreur lors du chargement des données');
+        console.error('Erreur:', err);
+        setError(`Erreur lors du chargement des données: ${err.message}`);
         setLoading(false);
       }
     }
@@ -79,6 +89,9 @@ const ProfilePage = () => {
   if (loading) return <div>Chargement...</div>;
   if (error) return <div>{error}</div>;
   if (!userData) return <div>Aucune donnée disponible</div>;
+
+  // Récupère le score depuis todayScore ou score selon ce qui est disponible
+  const scoreValue = userData.todayScore !== undefined ? userData.todayScore : userData.score;
 
   return (
     <ProfilContainer>
@@ -94,7 +107,7 @@ const ProfilePage = () => {
           <ChartsRow>
             <LineChart data={sessionsData} />
             <CustomRadarChart data={performanceData} />
-            <CustomPieChart score={userData.todayScore || userData.score} />
+            <CustomPieChart score={scoreValue} />
           </ChartsRow>
         </ChartsContainer>
         <Nutrients data={userData.keyData} />
