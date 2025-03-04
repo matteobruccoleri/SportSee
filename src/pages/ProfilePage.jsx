@@ -23,37 +23,6 @@ const ProfilePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const ProfilContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    height: 100%;
-    min-height: 780px;
-    padding: 50px;
-    gap: 50px;
-    @media (min-width: 1024px) {
-      width: 100%;
-    }
-  `;
-  const UserName = styled.span`
-    color: #FF0000;
-  `;
-  const Dashboard = styled.div`
-    display: flex;
-    height: 100%;
-    gap: 25px;
-  `;
-  const ChartsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 25px;
-  `;
-  const ChartsRow = styled.div`
-    display: flex;
-    gap: 25px;
-  `;
-
   useEffect(() => {
     async function fetchAllData() {
       try {
@@ -116,4 +85,34 @@ const ProfilePage = () => {
   );
 };
 
+const ProfilContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+    min-height: 780px;
+    padding: 50px;
+    gap: 50px;
+    @media (min-width: 1024px) {
+      width: 100%;
+    }
+  `;
+  const UserName = styled.span`
+    color: #FF0000;
+  `;
+  const Dashboard = styled.div`
+    display: flex;
+    height: 100%;
+    gap: 25px;
+  `;
+  const ChartsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 25px;
+  `;
+  const ChartsRow = styled.div`
+    display: flex;
+    gap: 25px;
+  `;
 export default ProfilePage;

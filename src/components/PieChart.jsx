@@ -3,55 +3,6 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const PieChartWrapper = styled.div`
-  background-color: #FBFBFB;
-  padding: 30px;
-  width: 100%;
-  height: 260px;
-  border-radius: 5px;
-  position: relative;
-`;
-
-const Title = styled.h2`
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  z-index: 2;
-  color: #20253A;
-`;
-
-const ScoreLabel = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 2;
-  background-color: white;
-  width: 95px;
-  height: 95px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const ScoreValue = styled.p`
-  font-size: 26px;
-  font-weight: 700;
-  margin: 0;
-  color: #282D30;
-`;
-
-const ScoreText = styled.p`
-  font-size: 16px;
-  color: #74798C;
-  margin: 0;
-  line-height: 1.3;
-  font-weight: 700;
-`;
 
 const ScorePieChart = ({ score }) => {
   if (score === undefined) return null;
@@ -109,5 +60,55 @@ const ScorePieChart = ({ score }) => {
 ScorePieChart.propTypes = {
   score: PropTypes.number.isRequired,
 };
+
+const PieChartWrapper = styled.div`
+  background-color: #FBFBFB;
+  padding: 30px;
+  width: 100%;
+  height: 260px;
+  border-radius: 5px;
+  position: relative;
+`;
+
+const Title = styled.h2`
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: 2;
+  color: #20253A;
+`;
+
+const ScoreLabel = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  background-color: white;
+  width: 95px;
+  height: 95px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const ScoreValue = styled.p`
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  color: #282D30;
+`;
+
+const ScoreText = styled.p`
+  font-size: 16px;
+  color: #74798C;
+  margin: 0;
+  line-height: 1.3;
+  font-weight: 700;
+`;
 
 export default ScorePieChart;

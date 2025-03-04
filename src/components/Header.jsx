@@ -1,7 +1,31 @@
 import styled from "styled-components";
-
 import Logo from "../assets/logo/logo_sportsee.svg";
 
+function Header() {
+  return (
+    <StyledHeader>
+      <StyledLogo>
+        <img src={Logo} alt="SportSee" height={60} />
+      </StyledLogo>
+        <Nav>
+            <Ul>
+                <Li>
+                    <a>Accueil</a>
+                </Li>
+                <Li>
+                    <a>Profil</a>
+                </Li>
+                <Li>
+                    <a>Réglage</a>
+                </Li>
+                <Li>
+                    <a>Communauté</a>
+                </Li>
+            </Ul>            
+        </Nav>
+    </StyledHeader>
+  )
+}
 
 const StyledHeader = styled.header`
   display: flex;
@@ -42,29 +66,4 @@ const Li = styled.li`
   color: #fff;
 `;
 
-function Header() {
-  return (
-    <StyledHeader>
-      <StyledLogo>
-        <img src={Logo} alt="SportSee" height={60} />
-      </StyledLogo>
-        <Nav>
-            <Ul>
-                <Li>
-                    <a>Accueil</a>
-                </Li>
-                <Li>
-                    <a>Profil</a>
-                </Li>
-                <Li>
-                    <a>Réglage</a>
-                </Li>
-                <Li>
-                    <a>Communauté</a>
-                </Li>
-            </Ul>            
-        </Nav>
-    </StyledHeader>
-  )
-}
 export default Header;

@@ -78,7 +78,6 @@ CustomizedTooltip.propTypes = {
 
 const SessionDurationChart = ({ data }) => {
   if (!data) return null;
-  console.log("LineChart data:", data);
   // Ici, data doit être un tableau d'objets avec au moins les clés "day" et "Duration"
   return (
     <ChartContainer>
