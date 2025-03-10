@@ -3,14 +3,6 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-const RadarChartWrapper = styled.div`
-  background-color: #282D30;
-  width: 100%;
-  height: 260px;
-  border-radius: 5px;
-  padding: 10px;
-`;
-
 const IntensityRadarChart = ({ data }) => {
   if (!data) return null;
 
@@ -49,5 +41,13 @@ IntensityRadarChart.propTypes = {
     ).isRequired,
   }).isRequired,
 };
+
+const RadarChartWrapper = styled.div`
+  background-color: #282D30;
+  width: 100%;
+  height: 260px;
+  border-radius: 5px;
+  padding: 10px;
+`;
 
 export default IntensityRadarChart;

@@ -1,36 +1,10 @@
-// components/LineChart.jsx
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, Rectangle } from "recharts";
 import styled from "styled-components";
 import PropTypes from 'prop-types';
-
-const ChartContainer = styled.div`
-  background-color: #FF0000;
-  border-radius: 5px;
-  width: 100%;
-  height: 260px;
-  position: relative;
-`;
-
-const CustomTooltip = styled.div`
-  background-color: white;
-  padding: 10px;
-  font-size: 12px;
-  color: black;
-`;
-
-const LegendText = styled.div`
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 15px;
-  font-weight: 500;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 150px;
-  line-height: 1.5;
-`;
+import { useRef, useEffect, useState } from 'react';
 
 const CustomCursor = (props) => {
-  const { points, width = 40, height, offset = 0 } = props;
+  const { points, width = 40, height, offset = 0, chartWidth } = props;
   const { x } = points[0];
   
   return (
@@ -38,7 +12,8 @@ const CustomCursor = (props) => {
       fill="rgba(0, 0, 0, 0.1)"
       x={x - (width / 2) + offset}
       y={0}
-      width={width}
+      // Étend le rectangle du point actuel jusqu'à la fin du graphique
+      width={chartWidth - x + (width / 2) - offset}
       height={height + 30}
     />
   );
@@ -53,7 +28,8 @@ CustomCursor.propTypes = {
   ),
   width: PropTypes.number,
   height: PropTypes.number,
-  offset: PropTypes.number
+  offset: PropTypes.number,
+  chartWidth: PropTypes.number
 };
 
 const CustomizedTooltip = ({ active = false, payload = [] }) => {
@@ -78,9 +54,30 @@ CustomizedTooltip.propTypes = {
 
 const SessionDurationChart = ({ data }) => {
   if (!data) return null;
+  
+  const chartRef = useRef(null);
+  const [chartWidth, setChartWidth] = useState(0);
+  
+  useEffect(() => {
+    if (chartRef.current) {
+      // Obtenir la largeur du conteneur du graphique
+      const updateChartWidth = () => {
+        const width = chartRef.current.getBoundingClientRect().width;
+        setChartWidth(width);
+      };
+      
+      updateChartWidth();
+      window.addEventListener('resize', updateChartWidth);
+      
+      return () => {
+        window.removeEventListener('resize', updateChartWidth);
+      };
+    }
+  }, []);
+  
   // Ici, data doit être un tableau d'objets avec au moins les clés "day" et "Duration"
   return (
-    <ChartContainer>
+    <ChartContainer ref={chartRef}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart 
           data={data}
@@ -101,7 +98,7 @@ const SessionDurationChart = ({ data }) => {
           />
           <Tooltip 
             content={<CustomizedTooltip />}
-            cursor={<CustomCursor width={30} offset={1} />}
+            cursor={<CustomCursor width={30} offset={1} chartWidth={chartWidth} />}
           />
           <Legend 
             verticalAlign="top"
@@ -139,5 +136,31 @@ SessionDurationChart.propTypes = {
     })
   )
 };
+
+const ChartContainer = styled.div`
+  background-color: #FF0000;
+  border-radius: 5px;
+  width: 100%;
+  height: 260px;
+  position: relative;
+`;
+
+const CustomTooltip = styled.div`
+  background-color: white;
+  padding: 10px;
+  font-size: 12px;
+  color: black;
+`;
+
+const LegendText = styled.div`
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 15px;
+  font-weight: 500;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 150px;
+  line-height: 1.5;
+`;
 
 export default SessionDurationChart;

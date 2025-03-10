@@ -5,6 +5,27 @@ import IconNageurs from "../assets/icons/nageur.svg";
 import IconCycliste from "../assets/icons/cycliste.svg";
 import IconAlteres from "../assets/icons/alteres.svg";
 
+function Sidebar() {
+  return (
+      <Nav>
+        <Ul>
+          <Li>
+            <img src={IconYoga} alt="Yoga" />
+          </Li>
+          <Li>
+            <img src={IconNageurs} alt="Swim" width={36} />
+          </Li>
+          <Li>
+            <img src={IconCycliste} alt="Cycle" />
+          </Li>
+          <Li>
+            <img src={IconAlteres} alt="Dumbbel" />
+          </Li>
+        </Ul>
+        <Copyright>Copyright, SportSee 2020</Copyright>
+      </Nav>
+  )
+}
 
 const Nav = styled.nav`
     background-color: #000;
@@ -43,25 +64,4 @@ const Copyright = styled.p`
   margin-top: auto;
 `;
 
-function Sidebar() {
-  return (
-      <Nav>
-        <Ul>
-          <Li>
-            <img src={IconYoga} alt="Yoga" />
-          </Li>
-          <Li>
-            <img src={IconNageurs} alt="Swim" width={36} />
-          </Li>
-          <Li>
-            <img src={IconCycliste} alt="Cycle" />
-          </Li>
-          <Li>
-            <img src={IconAlteres} alt="Dumbbel" />
-          </Li>
-        </Ul>
-        <Copyright>Copyright, SportSee 2020</Copyright>
-      </Nav>
-  )
-}
 export default Sidebar;

@@ -10,7 +10,7 @@ import {
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-// Remplacer defaultProps par des paramètres par défaut JavaScript
+
 const CustomTooltip = ({ active = false, payload = [] }) => {
   if (active && payload && payload.length) {
     return (
@@ -43,19 +43,14 @@ CustomTooltip.propTypes = {
   ),
 };
 
-// Supprimer la définition de defaultProps
-// CustomTooltip.defaultProps = {
-//   active: false,
-//   payload: [],
-// };
 
 function BarChart({ data }) {
   if (!data) return null;
 
-  // Transformation des données pour assurer que les clés correspondent aux attentes
-  // Ici, on suppose que les objets contiennent les clés : day, kilogram et calories.
-  const normalizedData = data.map((item) => ({
-    day: item.day,
+  
+  const normalizedData = data.map((item, index) => ({
+    day: (index + 1).toString(),
+    dayOriginal: item.day, 
     Poids: item.kilogram || item.Poids,
     Calories: item.calories || item.Calories,
   }));

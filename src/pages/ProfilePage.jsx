@@ -59,7 +59,7 @@ const ProfilePage = () => {
   if (error) return <div>{error}</div>;
   if (!userData) return <div>Aucune donnée disponible</div>;
 
-  // Récupère le score depuis todayScore ou score selon ce qui est disponible
+  // Récupère le score depuis todayScore ou score
   const scoreValue = userData.todayScore !== undefined ? userData.todayScore : userData.score;
 
   return (
@@ -115,4 +115,5 @@ const ProfilContainer = styled.div`
     display: flex;
     gap: 25px;
   `;
+
 export default ProfilePage;

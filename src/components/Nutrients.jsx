@@ -7,43 +7,6 @@ import IconChicken from "../assets/icons/chicken.svg";
 import IconEnergy from "../assets/icons/energy.svg";
 import IconCheeseburger from "../assets/icons/cheeseburger.svg";
 
-const StyledNutrientsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-`;
-
-const StyledNutrientWrapper = styled.div`
-  flex: 1 0 0;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 10px;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: #fbfbfb;
-  width: 100%;
-`;
-
-const StyledNutrientText = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5px;
-`;
-
-const NutrientIconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background-color: ${(props) => props.$bgColor};
-  border-radius: 6px;
-`;
-
 function Nutrients({ data }) {
   // Création d'un tableau de nutriments avec leurs valeurs et paramètres
   const nutrients = [
@@ -105,5 +68,42 @@ Nutrients.propTypes = {
     lipidCount: PropTypes.number.isRequired,
   }).isRequired,
 };
+
+const StyledNutrientsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+`;
+
+const StyledNutrientWrapper = styled.div`
+  flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #fbfbfb;
+  width: 100%;
+`;
+
+const StyledNutrientText = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+const NutrientIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: ${(props) => props.$bgColor};
+  border-radius: 6px;
+`;
 
 export default Nutrients;
