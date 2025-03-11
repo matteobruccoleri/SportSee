@@ -1,10 +1,9 @@
-// services/api.jsx
 const apiService = {
   async getUserMainData(userId) {
     try {
       const response = await fetch(`http://localhost:3000/user/${userId}`);
       const data = await response.json();
-      return data.data; // Reste inchangé (objet utilisateur)
+      return data.data; 
     } catch (error) {
       console.error('Error fetching user data:', error);
       throw error;
@@ -15,7 +14,7 @@ const apiService = {
     try {
       const response = await fetch(`http://localhost:3000/user/${userId}/activity`);
       const data = await response.json();
-      // Ici, on retourne directement le tableau sessions
+      
       return data.data.sessions;
     } catch (error) {
       console.error('Error fetching activity data:', error);
@@ -30,7 +29,7 @@ const apiService = {
       // Transformation pour renvoyer directement un tableau avec les clés attendues par le LineChart
       return data.data.sessions.map(session => ({
         day: session.day, 
-        Duration: session.sessionLength  // ou sessionLength s'il faut renommer
+        Duration: session.sessionLength  
       }));
     } catch (error) {
       console.error('Error fetching average sessions:', error);
@@ -42,7 +41,7 @@ const apiService = {
     try {
       const response = await fetch(`http://localhost:3000/user/${userId}/performance`);
       const data = await response.json();
-      return data.data; // On suppose que la structure est correcte ici (objet avec kind et data)
+      return data.data; 
     } catch (error) {
       console.error('Error fetching performance data:', error);
       throw error;
