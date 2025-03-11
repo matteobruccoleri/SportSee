@@ -1,7 +1,7 @@
 # SportSee
 
 ## Description
-SportSee est une application développée avec React qui permet de visualiser des données sportives.
+SportSee est une application développée avec React qui permet de visualiser les données sportives d'un utilisateur.
 
 ## Table des matières
 - [Prérequis](#prérequis)
@@ -11,8 +11,6 @@ SportSee est une application développée avec React qui permet de visualiser de
 - [Lancement du projet](#lancement-du-projet)
   - [Backend](#backend-1)
   - [Frontend](#frontend-1)
-- [Dépendances](#dépendances)
-- [Structure du projet](#structure-du-projet)
 
 ## Prérequis
 
@@ -22,7 +20,7 @@ SportSee est une application développée avec React qui permet de visualiser de
 
 ### Frontend
 - NodeJS (version 12.18 ou supérieure)
-- npm ou Yarn
+- npm
 
 ## Installation
 
@@ -56,7 +54,6 @@ SportSee est une application développée avec React qui permet de visualiser de
    
 2. L'application devrait être accessible à l'adresse `http://localhost:5173`.
 
-## Dépendances
 
 ### Frontend
 - **React**: Bibliothèque JavaScript pour construire l'interface utilisateur
@@ -64,10 +61,3 @@ SportSee est une application développée avec React qui permet de visualiser de
 - **Recharts**: Bibliothèque de visualisation de données pour React
 - **Styled-Components**: Bibliothèque pour styliser les composants React
 - **PropTypes**: Bibliothèque pour la validation des props dans React
-
-
-## Licence
-[Information sur la licence à ajouter]
-
-## Contact
-[Information de contact à ajouter]
