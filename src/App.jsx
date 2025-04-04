@@ -6,16 +6,6 @@ import Header from './components/Header';
 import SideBar from './components/SideBar';
 import ProfilePage from './pages/ProfilePage';
 
-const Main = styled.main`
-  display: flex;
-  overflow: hidden;
-  height: 100%;
-  min-height: 780px;
-  @media (min-width: 1024px) {
-    width: 100%;
-  }
-`;
-
 function App() {
   return (
     <Router>
@@ -30,5 +20,16 @@ function App() {
     </Router>
   );
 }
+
+/* styled components */
+const Main = styled.main`
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+  min-height: 780px;
+  @media (min-width: 1024px) {
+    width: 100%;
+  }
+`;
 
 export default App;

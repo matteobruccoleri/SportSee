@@ -42,6 +42,7 @@ IntensityRadarChart.propTypes = {
   }).isRequired,
 };
 
+/* styled components */
 const RadarChartWrapper = styled.div`
   background-color: #282D30;
   width: 100%;

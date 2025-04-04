@@ -27,6 +27,7 @@ function Sidebar() {
   )
 }
 
+/* styled components */
 const Nav = styled.nav`
     background-color: #000;
     width: max-content;

@@ -137,6 +137,7 @@ SessionDurationChart.propTypes = {
   )
 };
 
+/* styled components */
 const ChartContainer = styled.div`
   background-color: #FF0000;
   border-radius: 5px;

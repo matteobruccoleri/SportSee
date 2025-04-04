@@ -135,6 +135,7 @@ BarChart.propTypes = {
   ),
 };
 
+/* styled components */
 const BarChartWrapper = styled.div`
   background-color: #FBFBFB;
   padding: 20px;

@@ -69,6 +69,7 @@ Nutrients.propTypes = {
   }).isRequired,
 };
 
+/* styled components */
 const StyledNutrientsWrapper = styled.div`
   display: flex;
   flex-direction: column;

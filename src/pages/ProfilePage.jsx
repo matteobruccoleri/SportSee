@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import realApiService from '../services/api'; // Service API réel
-import mockApiService from '../services/mockApiService'; // Service mockée
+import dataService from '../services/dataService'; // Service unifié
 import BarChart from '../components/BarChart';
 import LineChart from '../components/LineChart';
 import CustomRadarChart from '../components/RadarChart';
@@ -9,10 +8,13 @@ import CustomPieChart from '../components/PieChart';
 import Nutrients from '../components/Nutrients';
 import styled from 'styled-components';
 
-// Utilisez cette constante pour choisir le service à utiliser
-const USE_MOCK_DATA = false;
-// Sélectionnez le service approprié en fonction de USE_MOCK_DATA
-const dataService = USE_MOCK_DATA ? mockApiService : realApiService;
+// Configuration du service avec la variable d'environnement
+// Si la variable n'est pas définie, on utilise l'API réelle par défaut
+const useMockData = import.meta.env.VITE_USE_MOCK_DATA === 'true';
+dataService.setUseMock(useMockData);
+
+// Pour déboguer - À supprimer en production
+console.log(`Mode données: ${useMockData ? 'Mock' : 'API réelle'}`);
 
 const ProfilePage = () => {
   const { userId } = useParams();
@@ -85,6 +87,7 @@ const ProfilePage = () => {
   );
 };
 
+/* styled components */
 const ProfilContainer = styled.div`
     display: flex;
     flex-direction: column;

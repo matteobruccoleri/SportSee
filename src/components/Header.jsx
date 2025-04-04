@@ -27,6 +27,7 @@ function Header() {
   )
 }
 
+/* styled components */
 const StyledHeader = styled.header`
   display: flex;
   flex-direction: row;

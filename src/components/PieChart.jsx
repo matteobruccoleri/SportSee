@@ -61,6 +61,7 @@ ScorePieChart.propTypes = {
   score: PropTypes.number.isRequired,
 };
 
+/* styled components */
 const PieChartWrapper = styled.div`
   background-color: #FBFBFB;
   padding: 30px;
