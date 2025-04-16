@@ -13,8 +13,6 @@ import styled from 'styled-components';
 const useMockData = import.meta.env.VITE_USE_MOCK_DATA === 'true';
 dataService.setUseMock(useMockData);
 
-// Pour déboguer - À supprimer en production
-console.log(`Mode données: ${useMockData ? 'Mock' : 'API réelle'}`);
 
 const ProfilePage = () => {
   const { userId } = useParams();
