@@ -82,6 +82,7 @@ const SessionDurationChart = ({ data }) => {
         <LineChart 
           data={data}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+          
         >
           <XAxis 
             dataKey="day" 
@@ -94,7 +95,7 @@ const SessionDurationChart = ({ data }) => {
           />
           <YAxis 
             hide={true}
-            domain={['dataMin - 10', 'dataMax + 10']}
+            domain={['dataMin - 30', 'dataMax + 30']}
           />
           <Tooltip 
             content={<CustomizedTooltip />}

@@ -84,7 +84,7 @@ const StyledNutrientWrapper = styled.div`
   align-items: center;
   justify-content: start;
   gap: 10px;
-  padding: 30px;
+  padding: 0 30px;
   border-radius: 10px;
   background-color: #fbfbfb;
   width: 100%;

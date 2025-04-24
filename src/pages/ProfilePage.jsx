@@ -91,7 +91,6 @@ const ProfilContainer = styled.div`
     flex-direction: column;
     overflow: hidden;
     height: 100%;
-    min-height: 780px;
     padding: 50px;
     gap: 50px;
     @media (min-width: 1024px) {
@@ -103,7 +102,6 @@ const ProfilContainer = styled.div`
   `;
   const Dashboard = styled.div`
     display: flex;
-    height: 100%;
     gap: 25px;
   `;
   const ChartsContainer = styled.div`

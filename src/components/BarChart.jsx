@@ -138,7 +138,7 @@ BarChart.propTypes = {
 /* styled components */
 const BarChartWrapper = styled.div`
   background-color: #FBFBFB;
-  padding: 20px;
+  padding: 20px 20px 40px;
   width: 100%;
   height: 260px;
   border-radius: 5px;
