@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import dataService from '../services/dataService'; // Service unifié
-import BarChart from '../components/BarChart';
-import LineChart from '../components/LineChart';
+import BarChart from '../components/barChart/BarChart';
+import LineChart from '../components/lineChart/LineChart';
 import CustomRadarChart from '../components/RadarChart';
 import CustomPieChart from '../components/PieChart';
 import Nutrients from '../components/Nutrients';

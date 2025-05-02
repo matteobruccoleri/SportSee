@@ -1,62 +1,17 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend, Rectangle } from "recharts";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import styled from "styled-components";
 import PropTypes from 'prop-types';
 import { useRef, useEffect, useState } from 'react';
-
-const CustomCursor = (props) => {
-  const { points, width = 40, height, offset = 0, chartWidth } = props;
-  const { x } = points[0];
-  
-  return (
-    <Rectangle
-      fill="rgba(0, 0, 0, 0.1)"
-      x={x - (width / 2) + offset}
-      y={0}
-      // Étend le rectangle du point actuel jusqu'à la fin du graphique
-      width={chartWidth - x + (width / 2) - offset}
-      height={height + 30}
-    />
-  );
-};
-
-CustomCursor.propTypes = {
-  points: PropTypes.arrayOf(
-    PropTypes.shape({
-      x: PropTypes.number,
-      y: PropTypes.number
-    })
-  ),
-  width: PropTypes.number,
-  height: PropTypes.number,
-  offset: PropTypes.number,
-  chartWidth: PropTypes.number
-};
-
-const CustomizedTooltip = ({ active = false, payload = [] }) => {
-  if (active && payload && payload.length) {
-    return (
-      <CustomTooltip>
-        {payload[0]?.value} min
-      </CustomTooltip>
-    );
-  }
-  return null;
-};
-
-CustomizedTooltip.propTypes = {
-  active: PropTypes.bool,
-  payload: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.number
-    })
-  )
-};
+import LineChartTooltip from './LineChartTooltip';
+import LineChartCursor from './LineChartCursor';
 
 const SessionDurationChart = ({ data }) => {
-  if (!data) return null;
-  
+  // Déclarez tous vos hooks AVANT toute condition
   const chartRef = useRef(null);
   const [chartWidth, setChartWidth] = useState(0);
+  
+  // Vérifier si les données sont disponibles
+  const hasData = data && Array.isArray(data) && data.length > 0;
   
   useEffect(() => {
     if (chartRef.current) {
@@ -75,14 +30,17 @@ const SessionDurationChart = ({ data }) => {
     }
   }, []);
   
-  // Ici, data doit être un tableau d'objets avec au moins les clés "day" et "Duration"
+  // Rendu conditionnel après la déclaration de tous les hooks
+  if (!hasData) {
+    return <div>Aucune donnée disponible</div>;
+  }
+  
   return (
     <ChartContainer ref={chartRef}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart 
           data={data}
           margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-          
         >
           <XAxis 
             dataKey="day" 
@@ -98,8 +56,8 @@ const SessionDurationChart = ({ data }) => {
             domain={['dataMin - 30', 'dataMax + 30']}
           />
           <Tooltip 
-            content={<CustomizedTooltip />}
-            cursor={<CustomCursor width={30} offset={1} chartWidth={chartWidth} />}
+            content={<LineChartTooltip />}
+            cursor={<LineChartCursor width={30} offset={1} chartWidth={chartWidth} />}
           />
           <Legend 
             verticalAlign="top"
@@ -145,13 +103,6 @@ const ChartContainer = styled.div`
   width: 100%;
   height: 260px;
   position: relative;
-`;
-
-const CustomTooltip = styled.div`
-  background-color: white;
-  padding: 10px;
-  font-size: 12px;
-  color: black;
 `;
 
 const LegendText = styled.div`

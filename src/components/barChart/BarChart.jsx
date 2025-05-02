@@ -9,44 +9,10 @@ import {
 } from "recharts";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-
-
-const CustomTooltip = ({ active = false, payload = [] }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "25px",
-          backgroundColor: "#E60000",
-          padding: "20px 10px",
-          color: "white",
-          fontSize: "12px",
-        }}
-      >
-        <p>{payload[0].value}kg</p>
-        <p>{payload[1].value}kCal</p>
-      </div>
-    );
-  }
-  return null;
-};
-
-CustomTooltip.propTypes = {
-  active: PropTypes.bool,
-  payload: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.number,
-    })
-  ),
-};
-
+import CustomTooltip from "./BarChartTooltip"; 
 
 function BarChart({ data }) {
   if (!data) return null;
-
   
   const normalizedData = data.map((item, index) => ({
     day: (index + 1).toString(),
