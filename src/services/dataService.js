@@ -41,9 +41,7 @@ const dataService = {
       return new Promise((resolve) => {
         setTimeout(() => {
           const activity = USER_ACTIVITY.find(a => a.userId === parseInt(userId));
-          // Passer directement le tableau de sessions au modèle
           const model = new ActivityModel(activity?.sessions);
-          // Résoudre avec les données, pas avec le modèle lui-même
           resolve(model.data);
         }, 300);
       });
